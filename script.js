@@ -43,7 +43,7 @@ function fetchApi(detail_pica){
     infoText.style.color = "#000";
     infoText.innerHTML = `Mencari Solusi dari <span>"${detail_pica}"</span>`;
     let url = `https://sheetdb.io/api/v1/kmd3utdyghxjr`;
-    fetch(url).then(response => response.json()).then(result => data(result, data)).catch(() =>{
+    fetch(url).then(response => response.json()).then(result => data(result)).catch(() =>{
         infoText.innerHTML = `Tidak dapat menemukan solusi <span>"${data}"</span>. Tolong, coba cari kata lain.`;
     });
 }
