@@ -33,8 +33,8 @@ function data(result, word){
     }
 }
 
-function search(word){
-    fetchApi(word);
+function search(detail_pica){
+    fetchApi(detail_pica);
     searchInput.value = detail_pica;
 }
 
