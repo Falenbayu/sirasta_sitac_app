@@ -13,6 +13,7 @@ body{
   min-height: 100vh;
   background: #F1F3F4;
 }
+
 ::selection{
   color: #fff;
   background: #14194C;
@@ -82,6 +83,11 @@ body{
 }
 .info-text span{
   font-weight: 500;
+}
+
+.typografy{
+  font-family: 'Mulish, sans-serif';
+  font-weight: 800;
 }
 .wrapper ul{
   height: 0;
