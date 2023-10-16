@@ -8,7 +8,7 @@ let audio;
 
 function data(result, word){
     if(result.title){
-        infoText.innerHTML = `Can't find the meaning of <span>"${word}"</span>. Please, try to search for another word.`;
+        infoText.innerHTML = `Can't find the meaning of <span>"${detail_pica}"</span>. Please, try to search for another word.`;
     }else{
         wrapper.classList.add("active");
         let definitions = result[0].meanings[0].definitions[0],
@@ -38,20 +38,20 @@ function search(word){
     searchInput.value = word;
 }
 
-function fetchApi(word){
+function fetchApi(detail_pica){
     wrapper.classList.remove("active");
     infoText.style.color = "#000";
-    infoText.innerHTML = `Searching the meaning of <span>"${word}"</span>`;
-    let url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
-    fetch(url).then(response => response.json()).then(result => data(result, word)).catch(() =>{
-        infoText.innerHTML = `Can't find the meaning of <span>"${word}"</span>. Please, try to search for another word.`;
+    infoText.innerHTML = `Searching the meaning of <span>"${detail_pica}"</span>`;
+    let url = `https://sheetdb.io/api/v1/kmd3utdyghxjr${detail_pica}`;
+    fetch(url).then(response => response.json()).then(result => data(result, detail_pica)).catch(() =>{
+        infoText.innerHTML = `Can't find the meaning of <span>"${detail_pica}"</span>. Please, try to search for another word.`;
     });
 }
 
 searchInput.addEventListener("keyup", e =>{
     let word = e.target.value.replace(/\s+/g, ' ');
     if(e.key == "Enter" && word){
-        fetchApi(word);
+        fetchApi(detail_pica);
     }
 });
 
