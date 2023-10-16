@@ -35,7 +35,7 @@ function data(result, word){
 
 function search(word){
     fetchApi(word);
-    searchInput.value = word;
+    searchInput.value = detail_pica;
 }
 
 function fetchApi(detail_pica){
