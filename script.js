@@ -6,9 +6,9 @@ synonyms = wrapper.querySelector(".synonyms .list"),
 removeIcon = wrapper.querySelector(".search span");
 let audio;
 
-function data(result, word){
+function data(result, data){
     if(result.title){
-        infoText.innerHTML = `Tidak dapat menemukan solusi <span>"${detail_pica}"</span>. Tolong, coba cari kata lain.`;
+        infoText.innerHTML = `Tidak dapat menemukan solusi <span>"${data}"</span>. Tolong, coba cari kata lain.`;
     }else{
         wrapper.classList.add("active");
         let definitions = result[0].meanings[0].definitions[0],
@@ -42,16 +42,16 @@ function fetchApi(detail_pica){
     wrapper.classList.remove("active");
     infoText.style.color = "#000";
     infoText.innerHTML = `Mencari Solusi dari <span>"${detail_pica}"</span>`;
-    let url = `https://sheetdb.io/api/v1/kmd3utdyghxjr${Sheet1}`;
-    fetch(url).then(response => response.json()).then(result => data(result, detail_pica)).catch(() =>{
-        infoText.innerHTML = `Tidak dapat menemukan solusi <span>"${detail_pica}"</span>. Tolong, coba cari kata lain.`;
+    let url = `https://sheetdb.io/api/v1/kmd3utdyghxjr`;
+    fetch(url).then(response => response.json()).then(result => data(result, data)).catch(() =>{
+        infoText.innerHTML = `Tidak dapat menemukan solusi <span>"${data}"</span>. Tolong, coba cari kata lain.`;
     });
 }
 
 searchInput.addEventListener("keyup", e =>{
     let word = e.target.value.replace(/\s+/g, ' ');
     if(e.key == "Enter" && word){
-        fetchApi(detail_pica);
+        fetchApi(data);
     }
 });
 
