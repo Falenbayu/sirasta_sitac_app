@@ -18,6 +18,11 @@ body{
   color: #fff;
   background: #14194C;
 }
+
+img{
+align-items: center;
+}
+
 .wrapper{
   width: 420px;
   border-radius: 7px;
