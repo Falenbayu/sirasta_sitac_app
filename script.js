@@ -8,7 +8,7 @@ let audio;
 
 function data(result, data){
     if(result.title){
-        infoText.innerHTML = `Tidak dapat menemukan solusi <span>"${data}"</span>. Tolong, coba cari kata lain.`;
+       // infoText.innerHTML = `Tidak dapat menemukan solusi <span>"${data}"</span>. Tolong, coba cari kata lain.`;
     }else{
         wrapper.classList.add("active");
         let definitions = result[0].meanings[0].definitions[0],
@@ -33,16 +33,16 @@ function data(result, data){
     }
 }
 
-function search(detail_pica){
-    fetchApi(detail_pica);
-    searchInput.value = detail_pica;
+function search(data){
+    fetchApi(data);
+    searchInput.value = data;
 }
 
 function fetchApi(detail_pica){
     wrapper.classList.remove("active");
     infoText.style.color = "#000";
-    infoText.innerHTML = `Mencari Solusi dari <span>"${detail_pica}"</span>`;
-    let url = ``;
+    infoText.innerHTML = `Mencari Solusi dari <span>"${data}"</span>`;
+    let url = `https://sheetdb.io/api/v1/kmd3utdyghxjr`;
     fetch(url).then(response => response.json()).then(result => data(result)).catch(() =>{
         infoText.innerHTML = `Tidak dapat menemukan solusi <span>"${data}"</span>. Tolong, coba cari kata lain.`;
     });
