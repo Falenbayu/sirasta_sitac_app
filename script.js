@@ -42,7 +42,7 @@ function fetchApi(detail_pica){
     wrapper.classList.remove("active");
     infoText.style.color = "#000";
     infoText.innerHTML = `Mencari Solusi dari <span>"${detail_pica}"</span>`;
-    let url = `https://sheetdb.io/api/v1/kmd3utdyghxjr${detail_pica}`;
+    let url = `https://sheetdb.io/api/v1/kmd3utdyghxjr`;
     fetch(url).then(response => response.json()).then(result => data(result, detail_pica)).catch(() =>{
         infoText.innerHTML = `Tidak dapat menemukan solusi <span>"${detail_pica}"</span>. Tolong, coba cari kata lain.`;
     });
@@ -51,7 +51,7 @@ function fetchApi(detail_pica){
 searchInput.addEventListener("keyup", e =>{
     let word = e.target.value.replace(/\s+/g, ' ');
     if(e.key == "Enter" && word){
-        fetchApi("https://sheetdb.io/api/v1/kmd3utdyghxjr");
+        fetchApi(detail_pica);
     }
 });
 
