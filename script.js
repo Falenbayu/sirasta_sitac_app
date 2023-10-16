@@ -42,7 +42,7 @@ function fetchApi(detail_pica){
     wrapper.classList.remove("active");
     infoText.style.color = "#000";
     infoText.innerHTML = `Mencari Solusi dari <span>"${detail_pica}"</span>`;
-    let url = `https://sheetdb.io/api/v1/kmd3utdyghxjr`;
+    let url = `https://sheetdb.io/api/v1/kmd3utdyghxjr${Sheet1}`;
     fetch(url).then(response => response.json()).then(result => data(result, detail_pica)).catch(() =>{
         infoText.innerHTML = `Tidak dapat menemukan solusi <span>"${detail_pica}"</span>. Tolong, coba cari kata lain.`;
     });
