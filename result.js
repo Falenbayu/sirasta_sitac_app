@@ -28,7 +28,7 @@ fetch("https://sheetdb.io/s/t/cntlo8g7jvsqg.js")
 // main.js
 
 // 5. POST request using fetch()
-fetch("https://sheetdb.io/s/t/cntlo8g7jvsqg.js", {
+fetch("https://sheetdb.io/s/t/cntlo8g7jvsqg.js/", {
   // 6. Adding method type
   method: "POST",
 
