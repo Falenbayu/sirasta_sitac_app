@@ -8,7 +8,7 @@ let audio;
 
 function data(result, word){
     if(result.title){
-        infoText.innerHTML = `Can't find the meaning of <span>"${detail_pica}"</span>. Please, try to search for another word.`;
+        infoText.innerHTML = `Tidak dapat menemukan solusi <span>"${detail_pica}"</span>. Tolong, coba cari kata lain.`;
     }else{
         wrapper.classList.add("active");
         let definitions = result[0].meanings[0].definitions[0],
@@ -41,10 +41,10 @@ function search(detail_pica){
 function fetchApi(detail_pica){
     wrapper.classList.remove("active");
     infoText.style.color = "#000";
-    infoText.innerHTML = `Searching the meaning of <span>"${detail_pica}"</span>`;
+    infoText.innerHTML = `Mencari Solusi dari <span>"${detail_pica}"</span>`;
     let url = `https://sheetdb.io/api/v1/kmd3utdyghxjr${detail_pica}`;
     fetch(url).then(response => response.json()).then(result => data(result, detail_pica)).catch(() =>{
-        infoText.innerHTML = `Can't find the meaning of <span>"${detail_pica}"</span>. Please, try to search for another word.`;
+        infoText.innerHTML = `Tidak dapat menemukan solusi <span>"${detail_pica}"</span>. Tolong, coba cari kata lain.`;
     });
 }
 
@@ -68,5 +68,5 @@ removeIcon.addEventListener("click", ()=>{
     searchInput.focus();
     wrapper.classList.remove("active");
     infoText.style.color = "#9A9A9A";
-    infoText.innerHTML = "Type any existing word and press enter to get meaning, example, synonyms, etc.";
+    infoText.innerHTML = "Ketik kata apapun yang sudah ada dan tekan enter untuk dapat petunjuk, action plan, dll.";
 });
