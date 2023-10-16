@@ -100,10 +100,11 @@ align-items: center;
 }
 
 .typografy{
-  font-family: 'Mulish';
+  font-family: 'Mulish, sans-serif';
   font-weight: 800;
   text-align: center;
   padding-bottom: 10px;
+  color: #14194C;
 }
 .wrapper ul{
   height: 0;
