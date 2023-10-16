@@ -1,49 +1,51 @@
-// api url
-const api_url = 
-	"https://sheetdb.io/api/v1/kmd3utdyghxjr";
+// main.js...
 
-// Defining async function
-async function getapi(url) {
+// 1. GET request using fetch()
+fetch("https://sheetdb.io/s/t/cntlo8g7jvsqg.js")
+  // Converting received data to JSON
+  .then((response) => response.json())
+  .then((json) => {
+    
+  // 2. Create a variable to store HTML table headers
+    let li = `<tr><th>grup_pica</th><th>sub_pica</th><th>detail_pica</th><th>detail_pica</th> <th>alternatif_solusi1</th><th>alternatif_solusi2</th></tr>`;
 
-	// Storing response
-	const response = await fetch(url);
+    // 3. Loop through each data and add a table row
+    json.forEach((user) => {
+      li += `<tr>
+        <td>${user.grup_pica}</td>
+        <td>${user.sub_pica} </td>
+        <td>${user.detail_pica}</td>
+        <td>${user.alternatif_solusi1}</td>
+        <td>${user.alternatif_solusi2}</td>
+        <td>${user.alternatif_solusi3}</td>
+      </tr>`;
+    });
 
-	// Storing data in form of JSON
-	var data = await response.json();
-	console.log(data);
-	if (response) {
-		hideloader();
-	}
-	show(data);
-}
-// Calling that async function
-getapi(api_url);
+    // 4. DOM Display result
+    document.getElementById("users").innerHTML = li;
+  });
 
-// Function to hide the loader
-function hideloader() {
-	document.getElementById('loading').style.display = 'none';
-}
-// Function to define innerHTML for HTML table
-function show(data) {
-	let tab = 
-		`<tr>
-		<th>Sub Pica</th>
-		<th>Detail Pica</th>
-		<th>alternatif_solusi_1</th>
-		<th>alternatif_solusi_2</th>
-        <th>alternatif_solusi_3</th>
-		</tr>`;
+// main.js
 
-	// Loop to access all rows 
-	for (let r of data.list) {
-		tab += `<tr> 
-	<td>${r.sub_pica} </td>
-	<td>${r.detail_pica}</td>
-	<td>${r.alternatif_solusi_1}</td> 
-	<td>${r.alternatif_solusi_2}</td>
-    <td>${r.alternatif_solusi_3}</td>		 
-</tr>`;
-	}
-	// Setting innerHTML as tab variable
-	document.getElementById("masterlist").innerHTML = tab;
-}
+// 5. POST request using fetch()
+fetch("https://sheetdb.io/s/t/cntlo8g7jvsqg.js", {
+  // 6. Adding method type
+  method: "POST",
+
+  // 7. Adding body or contents to send JSON Stringify
+  body: JSON.stringify({
+    title: "foo",
+    body: "bar",
+    userId: 1
+  }),
+
+  // 8. Adding headers to the request
+  headers: {
+    "Content-type": "application/json; charset=UTF-8"
+  }
+})
+  // 9. Converting to JSON
+  .then((response) => response.json())
+
+  // 10. Displaying results to console
+  .then((json) => console.log(json));
